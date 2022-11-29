@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="col-md-4">
+    <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+      <input class="form-control" formControlName="SId" type="hidden" />
+      <div class="form-group">
+        <label>Tegn</label>
+        <input class="form-control" formControlName="tegn" />
+        <p class="alert alert-warning" [hidden]="skjema.controls.tegn.valid || (skjema.controls.tegn.pristine && !submitted)">
+          Tegn mangler. eks. ADD
+        </p>
+      </div>
+      <div class="form-group">
+        <label>Selskap</label>
+        <input class="form-control" formControlName="selskap" />
+        <p class="alert alert-warning" [hidden]="skjema.controls.selskap.valid || (skjema.controls.selskap.pristine && !submitted)">
+          Selskapsnavn Mangler. Eks. NRK
+        </p>
+      </div>
+      <div class="form-group">
+        <label>Antall Stock</label>
+        <input class="form-control" formControlName="antallstock" />
+        <p class="alert alert-warning" [hidden]="skjema.controls.antallstock.valid || (skjema.controls.antallstock.pristine && !submitted)">
+          mangler Antall Stock eks. 50
+        </p>
+      </div>
+      <div class="form-group">
+        <label>Endring</label>
+        <input class="form-control" formControlName="endring" />
+        <p class="alert alert-warning" [hidden]="skjema.controls.endring.valid || (skjema.controls.endring.pristine && !submitted)">
+          Mangler Endring tall eks. 3.3
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label>Siste Pris</label>
+        <input class="form-control" formControlName="sistepris" />
+        <p class="alert alert-warning" [hidden]="skjema.controls.sistepris.valid || (skjema.controls.sistepris.pristine && !submitted)">
+          Mangler Siste Pristall eks. 3.3
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label>Volume</label>
+        <input class="form-control" formControlName="volume" />
+        <p class="alert alert-warning" [hidden]="skjema.controls.volume.valid || (skjema.controls.volume.pristine && !submitted)">
+          Mangler Volume eks. 4.3
+        </p>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" [disabled]="!skjema.valid" class="btn btn-primary">Lagre</button>
+        <button class="btn btn-default" routerLink="/home">Tilbake</button>
+      </div>
+    </form>
+  </div>
+</div>

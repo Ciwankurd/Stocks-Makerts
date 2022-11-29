@@ -1,0 +1,43 @@
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Registere Ne Bruker</h4>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+
+        <div class="col-md-10 mx-auto">
+          <form [formGroup]="skjemaM" (ngSubmit)="vedSubmitM()">
+
+            <div class="form-group row">
+              <label>Brukernavn</label>
+              <input class="form-control" formControlName="brukernavnM" />
+              <p class="alert alert-warning" [hidden]="skjemaM.controls.brukernavnM.valid || (skjemaM.controls.brukernavnM.pristine && !submitted)">
+                ugyldig brukernavn
+              </p>
+            </div>
+            <div class="form-group row">
+              <label>Passord</label>
+              <input class="form-control" formControlName="passordM" />
+              
+                <ul class="alert alert-warning" [hidden]="skjemaM.controls.passordM.valid || (skjemaM.controls.passordM.pristine && !submitted)">
+                  <li>At least 8 characters in length</li>
+                  <li>Lowercase letters</li>
+                  <li>Uppercase letters</li>
+                  <li>Numbers</li>
+                  <li>Special character</li>
+                  <li>Example: Nechrvan11@!</li>
+                </ul>
+              
+            </div>
+           
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+        
+        <button type="button"  class="btn btn-danger" (click)="modal.close()">Avbryte</button>
+        <button type="submit" data-dismiss="modal" [disabled]="!skjemaM.valid" class="btn btn-primary" (click)="Registere()">Registere</button>
+    </div>
+</div>

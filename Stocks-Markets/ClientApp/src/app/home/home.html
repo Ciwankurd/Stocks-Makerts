@@ -1,0 +1,93 @@
+
+<!------------------------- Admin hjeme side ---------------------->
+
+<div class="container" *ngIf="BrukerType">
+  <div class="navbar-nav flex-grow">
+    <h2> Admin Controller </h2>
+    <h5 *ngIf="logginOK" style="position:absolute; right: 5%" class="text-black-50">Logget via: {{brukernavn}}</h5>
+  </div>
+  <div>
+    <div class="col-md-12">
+      <div *ngIf="!logginOK">
+        <p style="color:crimson">Du må loggin først!</p>
+        <button class="btn btn-primary" routerLink="/loggin">loggin</button>
+      </div>
+      <div *ngIf="laster">Laster kunder.....</div>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>S-ID</th>
+            <th>Tegn</th>
+            <th>Selskap</th>
+            <th>Antall Stock</th>
+            <th>Endring</th>
+            <th>Siste Pirse</th>
+            <th>Volume</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let s of AlleStocks">
+          <tr>
+            <td>{{s.sId}}</td>
+            <td>{{s.tegn}}</td>
+            <td>{{s.selskapNavn}}</td>
+            <td>{{s.antallStock}}</td>
+            <td>{{s.endring}}</td>
+            <td>{{s.sistePrise}}</td>
+            <td>{{s.volume}}</td>
+            <td><button class="btn btn-danger" (click)="sletteStock(s.sId)">Slett</button></td>
+            <td><button class="btn btn-success" [routerLink]="['/endre',s.sId]">Endre</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class='btn btn-primary' routerLink="/lagre">Lagre Stock</button>
+    </div>
+  </div>
+</div>
+
+<!------------------------- Bruker hjeme side ---------------------->
+
+<div class="container" *ngIf="!BrukerType">
+  <div class="navbar-nav flex-grow">
+    <h2>Velkommen til Nord Stock Market: </h2>
+    <h5>Alle partner i våre webplatoform Selskaper/Stocks : </h5>
+    <h5 *ngIf="logginOK" style="position:absolute; right: 5%" class="text-black-50">Logget via: {{brukernavn}}</h5>
+  </div>
+  <div>
+    <div class="col-md-12">
+      <div *ngIf="!logginOK">
+        <p style="color:crimson">Du må loggin først!</p>
+        <button class="btn btn-primary" routerLink="/loggin">loggin</button>
+      </div>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>S-ID</th>
+            <th>Tegn</th>
+            <th>Selskap</th>
+            <th>Antall Stock</th>
+            <th>Endring</th>
+            <th>Siste Pirse</th>
+            <th>Volume</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let s of AlleStocks">
+          <tr>
+            <td>{{s.sId}}</td>
+            <td>{{s.tegn}}</td>
+            <td>{{s.selskapNavn}}</td>
+            <td>{{s.antallStock}}</td>
+            <td>{{s.endring}}</td>
+            <td>{{s.sistePrise}}</td>
+            <td>{{s.volume}}</td>
+            <td><button class="btn btn-success" data-toggle="modal" (click)="kjopeStocks(s.sId)">kjøpe</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class='btn btn-primary' routerLink="/minstock">Vis Min Stocks</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Velge Antall Stocks du vil Kjøpe</h4>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+
+      <div class="col-md-10 mx-auto">
+        <form [formGroup]="skjemak" (ngSubmit)="vedSubmit()">
+
+          <div class="form-group row">
+            <label>SId</label>
+            <input class="form-control" formControlName="SId" [(ngModel)]="SId" disabled="disabled" value="{{SId}}" />
+          </div>
+          <div class="form-group row">
+            <label>Antall-Stocks</label>
+            <input class="form-control" formControlName="antallStocks" />
+            <p class="alert alert-warning" [hidden]="skjemak.controls.antallStocks.valid || (skjemak.controls.antallStocks.pristine && !submitted)">
+              ugyldig value
+            </p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+
+    <button type="button" class="btn btn-danger" (click)="modal.close()">Avbryte</button>
+    <button type="submit"  [disabled]="!skjemak.valid" class="btn btn-primary" (click)="Kjope()" >Bekrefte</button>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="col-md-4" >
+        <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+           
+            <div class="form-group">
+              <label>Brukernavn</label>
+                <input placeholder="Skrive inn Brukernavn" class="form-control" formControlName="brukernavn" />
+                <p class="alert alert-warning" [hidden]="skjema.controls.brukernavn.valid || (skjema.controls.brukernavn.pristine && !submitted)">
+                    ufyldig brukernavn
+                </p>
+            </div>
+            <div class="form-group">
+                <label>Passord</label>
+                <input placeholder="Skrive inn passord" type="password" class="form-control" formControlName="passord" />
+                <p class="alert alert-warning" [hidden]="skjema.controls.passord.valid || (skjema.controls.passord.pristine && !submitted)">
+                    ugyldig passord
+                </p>
+            </div>
+            <div class="form-group">
+                <button type="submit" [disabled]="!skjema.valid" class="btn btn-primary" style="margin-right:15px">Loggin</button>
+                <button type="button" class="btn btn-outline-primary" (click)="Registere()">Registere</button>
+              <br />
+              <br />
+              <p>{{errMsg}}</p>
+            </div>
+        </form>
+    </div>
+</div>
+

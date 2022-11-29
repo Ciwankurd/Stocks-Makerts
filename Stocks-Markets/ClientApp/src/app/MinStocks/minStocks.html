@@ -1,0 +1,52 @@
+<!------------------------- Bruker Stocks side ---------------------->
+
+<div class="container">
+  <div class="navbar-nav flex-grow">
+    <h2>Velkommen til Nord Stock Market: </h2>
+    <h5>Alle partner i våre webplatoform Selskaper/Stocks : </h5>
+    <h5 *ngIf="logginOK" style="position:absolute; right: 5%" class="text-black-50">Logget via: {{brukernavn}}</h5>
+  </div>
+  <div>
+    <div class="col-md-12">
+      <div *ngIf="!logginOK">
+        <p style="color:crimson">Du må loggin først!</p>
+        <button class="btn btn-primary" routerLink="/loggin">loggin</button>
+      </div>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+
+            <th>B-ID</th>
+            <th>Owner</th>
+            <th>B_S_ID</th>
+            <th>Selskap</th>
+            <th>Tegn</th>
+            <th>Antall Stock</th>
+            <th>Dato/Tid</th>
+            <th>Siste Pirse</th>
+            <th>Endring</th>
+            <th>Volume</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let bs of AlleBrukerStocks">
+          <tr>
+            <td>{{bs.bruker.bId}}</td>
+            <td>{{bs.bruker.brukernavn}}</td>
+            <td>{{bs.bsId}}</td>
+            <td>{{bs.stock.selskapNavn}}</td>
+            <td>{{bs.stock.tegn}}</td>
+            <td>{{bs.antallstock}}</td>
+            <td>{{bs.dateAndTime}}</td>
+            <td>{{bs.stock.sistePrise}}</td>
+            <td>{{bs.stock.endring}}</td>
+            <td>{{bs.stock.volume}}</td>
+            <td><button class="btn btn-success" data-toggle="modal" (click)="slegeStocks(bs.stock.sId,bs.bsId)">Selge</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class='btn btn-primary' routerLink="/home">Tilbacke</button>
+    </div>
+  </div>
+</div>
