@@ -282,7 +282,7 @@ namespace Stocks_Markets.Controllers
             return BadRequest("Vadering Feil på server!");
         }
 
-        // ---------------Hent Stocks Til Bruker Som loggetinn -------
+        // ---------------Hent Stocks Til Bruker Som loggetinn ---------
         [HttpGet("HentBrukerStocks")]
         public async Task<ActionResult> HentBrukerStocks()
         {
